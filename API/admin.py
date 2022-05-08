@@ -1,0 +1,64 @@
+
+from dataclasses import fields
+from django.contrib import admin
+
+from API.serializers import skillserializers
+from  . import models
+
+
+# Register your models here.
+
+#personladetails
+class PdetailAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
+admin.site.register(models.Pdetail,PdetailAdmin)
+
+#class FileAdmin(admin.ModelAdmin):
+#    list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
+#admin.site.register(models.Fileupload,FileAdmin)
+
+#EMPLOYEMENT
+class EmployementAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('Total_Experience','Your_Designation' ,'your_organization','start_date','end_date','Describe_job_profile')
+admin.site.register(models.Employement, EmployementAdmin)
+
+
+#Educaiton
+class EducationAdmin(admin.ModelAdmin):
+    list_display=('education','passing_year','School_College','Specializaion','percentage')
+admin.site.register(models.Educations, EducationAdmin)
+
+
+#Skills
+class SkillsetAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('Tech_Skill', 'Description','Non_Tech_Skill','Description','Experience')
+admin.site.register(models.Skills,SkillsetAdmin)
+
+
+#Project
+class ProjectAdmin(admin.ModelAdmin):
+    list_display=('Project_Title','Project_Description','Project_Lcation','Team_Size','Team_Role','Technology_used')
+admin.site.register(models.Project, ProjectAdmin)
+
+
+#SOCIALPROFILE
+class SocialProfileAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('Social_name','Social_url','Description')
+admin.site.register(models.Online_profile, SocialProfileAdmin)
+
+
+#Sample Work
+class SampleAdmin(admin.ModelAdmin):
+    list_display=('Work_title','Work_link','Description')
+
+
+#CERTIFICATION
+class certificationAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('certification_on','certificate_Id' ,'certificate_url')
+admin.site.register(models.certification, certificationAdmin)
+
