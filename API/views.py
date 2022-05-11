@@ -1,3 +1,5 @@
+from http.client import responses
+from urllib import response
 from django.shortcuts import render
 from rest_framework import generics
 from .models import *
@@ -10,19 +12,48 @@ from .serializers import *
 
 #Profiledetails
 ##Create
-class PdetailCreate(generics.CreateAPIView):
-    models= Pdetail.objects.all()
-    serializers_class= Pdetailserializers
+# class PdetailCreate(generics.CreateAPIView):
+#     queryset = Pdetail.objects.all()
+#     serializers_class= Pdetailserializers
 
-#ListView
-class PdetailList(generics.ListAPIView):
-    queryset = Pdetail.objects.all()
-    serializer_class = Pdetailserializers
+#     def list(self, request):
+#         # Note the use of `get_queryset()` instead of `self.queryset`
+#         new_queryset = self.get_queryset()
+#         serializer = Pdetailserializers(new_queryset, many=True)
+#         return responses(serializer.data)
 
-#Update
-class PdetailUpdate(generics.UpdateAPIView):
-    queryset = Pdetail.objects.all()
-    serializer_class = Pdetailserializers
+
+#     def get_serializer_class(self):
+#         return Pdetail
+
+#     def list(self,*args, **kwargs):
+#         personal = Pdetail.objects.all()
+#         serializer = Pdetailserializers(personal, many=True)
+#         return response(serializer)
+    
+#Filefield
+class FileuploadCreate(generics.CreateAPIView):
+    queryset = Fileupload.objects.all()
+    serializer_class = FileSerializer
+
+# Employement LIST VIEW READ
+class FileUploadList(generics.ListAPIView):
+    queryset = Fileupload.objects.all()
+    serializer_class = FileSerializer
+
+class FileUploadUpdate(generics.UpdateAPIView):
+    queryset = Fileupload.objects.all()
+    serializer_class = FileSerializer
+
+# #ListView
+# class PdetailList(generics.ListAPIView):
+#     queryset = Pdetail.objects.all()
+#     serializer_class = Pdetailserializers
+
+# #Update
+# class PdetailUpdate(generics.UpdateAPIView):
+#     queryset = Pdetail.objects.all()
+#     serializer_class = Pdetailserializers
 
 
 #Employement
@@ -41,14 +72,14 @@ class EmployeeUpdate(generics.UpdateAPIView):
     serializer_class = Employementserializers
 
 #Employement DETAILS
-###class EmployementDetail(generics.RetrieveDestroyAPIView):
-###    queryset = Employement.objects.all()
-###    serializer_class = Employementserializers
+# ##class EmployementDetail(generics.RetrieveDestroyAPIView):
+# ##    queryset = Employement.objects.all()
+# ##    serializer_class = Employementserializers
 
-#Employement DELETE 
-###class EmployementDelete(generics.DestroyAPIView):
-###    queryset = Employement.objects.all()
-###    serializer_class = Employementserializers
+# Employement DELETE 
+# ##class EmployementDelete(generics.DestroyAPIView):
+# ##    queryset = Employement.objects.all()
+# ##    serializer_class = Employementserializers
 
 
 #Education

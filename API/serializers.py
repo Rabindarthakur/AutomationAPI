@@ -3,16 +3,18 @@ from rest_framework import serializers
 from .models import *
 
 
-#Automation Serializers
-class Pdetailserializers(serializers.ModelSerializer):
-    class Meta:
-        model=Pdetail
-        fields='__all__'
+#Pdetails Serializers
+# class Pdetailserializers(serializers.ModelSerializer):
+#     class Meta:
+#         model=Pdetail
+#         fields='__all__'
 
-#class fileserializers(serializers.ModelSerializer):
-#    class Meta:
-#        model= Fileupload
-#        fields='__all__'
+
+class FileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fileupload
+        fields = "__all__"
+
 
 class Employementserializers(serializers.ModelSerializer):
     class Meta:

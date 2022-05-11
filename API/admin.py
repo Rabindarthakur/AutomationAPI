@@ -1,22 +1,19 @@
-
 from dataclasses import fields
 from django.contrib import admin
-
-from API.serializers import skillserializers
 from  . import models
 
 
 # Register your models here.
 
 #personladetails
-class PdetailAdmin(admin.ModelAdmin):
-    # a list of displayed columns name.
-    list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
-admin.site.register(models.Pdetail,PdetailAdmin)
+# class PdetailAdmin(admin.ModelAdmin):
+#     # a list of displayed columns name.
+#     list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
+# admin.site.register(models.Pdetail,PdetailAdmin)
 
-#class FileAdmin(admin.ModelAdmin):
-#    list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
-#admin.site.register(models.Fileupload,FileAdmin)
+class FileAdmin(admin.ModelAdmin):
+   list_display= ('Title','Document')
+admin.site.register(models.Fileupload,FileAdmin)
 
 #EMPLOYEMENT
 class EmployementAdmin(admin.ModelAdmin):
@@ -40,7 +37,7 @@ admin.site.register(models.Skills,SkillsetAdmin)
 
 #Project
 class ProjectAdmin(admin.ModelAdmin):
-    list_display=('Project_Title','Project_Description','Project_Lcation','Team_Size','Team_Role','Technology_used')
+    list_display=('Project_Title','Project_Description','Project_Location','Team_Size','Team_Role','Technology_used')
 admin.site.register(models.Project, ProjectAdmin)
 
 
@@ -54,6 +51,7 @@ admin.site.register(models.Online_profile, SocialProfileAdmin)
 #Sample Work
 class SampleAdmin(admin.ModelAdmin):
     list_display=('Work_title','Work_link','Description')
+admin.site.register(models.SampleWork, SampleAdmin)
 
 
 #CERTIFICATION

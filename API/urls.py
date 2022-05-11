@@ -1,15 +1,25 @@
 from django.urls import path
 from .views  import *
 from API import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
 
 urlpatterns = [
 
   #Profiledetails
-  path('api/user/Pdetail/post/',views.PdetailCreate.as_view(), name='pdetail_post'),
-  path('api/user/Pdetail/list/',views.PdetailList.as_view(), name='pdetail_list'),
-  path('api/user/Pdetail/update/<int:pk>',views.PdetailUpdate.as_view(), name='pdetail_update'),
+  # path('api/user/Pdetail/post/',views.PdetailCreate.as_view(), name='pdetail_post'),
+  # path('api/user/Pdetail/list/',views.PdetailList.as_view(), name='pdetail_list'),
+  # path('api/user/Pdetail/update/<int:pk>',views.PdetailUpdate.as_view(), name='pdetail_update'),
   
+  #FileField
+  path('api/users/file/upload/post/',views.FileuploadCreate.as_view(), name='fileupload'),
+  path('api/users/file/list/',views.FileUploadList.as_view(), name='fileList'),
+  path('api/users/file/update/<int:pk>',views.FileUploadUpdate.as_view(), name='fileUpdate'),
   
+
   #Employement
   path('api/user/Employement/post/',views.EmployementCreate.as_view(),  name='Employement_post'),
   path('api/user/Employement/listview/',views.EmployementList.as_view(),  name='Employement_list'),
@@ -32,9 +42,9 @@ urlpatterns = [
     
 
   #Project
-  path('api/user/project/post/',views.ProjectsCreate.as_view, name='project_post'),
-  path('api/user/project/list/',views.ProjectsList.as_view, name='project_list'),
-  path('api/user/project/update/<int:pk>',views.ProjectsUpdate.as_view, name='project_update'),
+  path('api/user/project/post/',views.ProjectsCreate.as_view(), name='project_post'),
+  path('api/user/project/list/',views.ProjectsList.as_view(), name='project_list'),
+  path('api/user/project/update/<int:pk>',views.ProjectsUpdate.as_view(), name='project_update'),
 
 
   #Online Profiles
@@ -60,5 +70,7 @@ urlpatterns = [
     
 
 
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
 
