@@ -5,6 +5,7 @@ from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import FileExtensionValidator
+from django.core.validators import RegexValidator
 
 
 # Create your models here.
@@ -14,7 +15,8 @@ class Pdetail(models.Model):
     date_of_birth = models.DateField()
     Sexchoice=([('Male','Male'),('Female','Femail')])
     Gender=models.TextField(choices=Sexchoice,max_length=20,blank=True)
-    phone_number = models.IntegerField(blank=True, help_text='Enter Your Contact Number')
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     Email=models.EmailField()
     Address=models.TextField(max_length=255)
     City=models.TextField(max_length=255)
@@ -23,7 +25,7 @@ class Pdetail(models.Model):
 #FileUpload
 class Fileupload(models.Model):
     Title=models.TextField(max_length=255)
-    Document= models.FileField(upload_to='uploads/documents/',null=True,blank=True,validators=[FileExtensionValidator( ['pdf','.doc','docx'] ) ])
+    Document= models.FileField(upload_to='uploads/documents/',null=True,blank=True,validators=[FileExtensionValidator( ['pdf','.doc','docx'])])
     
   
 #Employement 
