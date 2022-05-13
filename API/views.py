@@ -4,7 +4,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import *
 from .serializers import *
-
+from rest_framework.permissions import IsAdminUser
 
 
 # Create your views here.
@@ -12,25 +12,23 @@ from .serializers import *
 
 #Profiledetails
 ##Create
-# class PdetailCreate(generics.CreateAPIView):
-#     queryset = Pdetail.objects.all()
-#     serializers_class= Pdetailserializers
-
-#     def list(self, request):
-#         # Note the use of `get_queryset()` instead of `self.queryset`
-#         new_queryset = self.get_queryset()
-#         serializer = Pdetailserializers(new_queryset, many=True)
-#         return responses(serializer.data)
+class PdetailCreate(generics.CreateAPIView):
+    queryset = Pdetail.objects.all()
+    serializers_class= Pdetailserializers
 
 
-#     def get_serializer_class(self):
-#         return Pdetail
+#List
+class PdetailList(generics.ListAPIView):
+    queryset = Pdetail.objects.all()
+    serializers_class= Pdetailserializers
 
-#     def list(self,*args, **kwargs):
-#         personal = Pdetail.objects.all()
-#         serializer = Pdetailserializers(personal, many=True)
-#         return response(serializer)
+#Update
+class PdetailUpdate(generics.UpdateAPIView):
+    queryset = Pdetail.objects.all()
+    serializers_class= Pdetailserializers
     
+
+
 #Filefield
 class FileuploadCreate(generics.CreateAPIView):
     queryset = Fileupload.objects.all()

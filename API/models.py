@@ -1,27 +1,32 @@
-from unittest.util import _MAX_LENGTH
+from email.policy import default
+from random import choices
+from secrets import choice
 from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import FileExtensionValidator
+
 
 # Create your models here.
 #Pdetails
-# class Pdetail(models.Model):
-#     Name =models.TextField(max_length=20)
-#     DOB = models.DateField()
-#     Phone_number= models.IntegerField()
-#     Email= models.EmailField()
-#     Address=models.TextField(max_length=100)
-#     Town=models.TextField(max_length=50)
+class Pdetail(models.Model):
+    name=models.TextField(max_length=255)
+    date_of_birth = models.DateField()
+    Sexchoice=([('Male','Male'),('Female','Femail')])
+    Gender=models.TextField(choices=Sexchoice,max_length=20,blank=True)
+    phone_number = models.IntegerField(blank=True, help_text='Enter Your Contact Number')
+    Email=models.EmailField()
+    Address=models.TextField(max_length=255)
+    City=models.TextField(max_length=255)
 
+
+#FileUpload
 class Fileupload(models.Model):
     Title=models.TextField(max_length=255)
-    Document= models.FileField(upload_to='uploads/documents/')
+    Document= models.FileField(upload_to='uploads/documents/',null=True,blank=True,validators=[FileExtensionValidator( ['pdf','.doc','docx'] ) ])
     
   
-
-
-
-#Employement
+#Employement 
 class Employement(models.Model):
     Total_Experience = models.IntegerField(default=1)
     Your_Designation=models.TextField(max_length=50,default='Designation You have Worked With')

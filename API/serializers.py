@@ -4,10 +4,10 @@ from .models import *
 
 
 #Pdetails Serializers
-# class Pdetailserializers(serializers.ModelSerializer):
-#     class Meta:
-#         model=Pdetail
-#         fields='__all__'
+class Pdetailserializers(serializers.ModelSerializer):
+    class Meta:
+        model=Pdetail
+        fields="__all__"
 
 
 class FileSerializer(serializers.ModelSerializer):

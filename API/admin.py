@@ -1,4 +1,3 @@
-from dataclasses import fields
 from django.contrib import admin
 from  . import models
 
@@ -6,11 +5,12 @@ from  . import models
 # Register your models here.
 
 #personladetails
-# class PdetailAdmin(admin.ModelAdmin):
-#     # a list of displayed columns name.
-#     list_display= ('Name', 'DOB','Phone_number','Email','Address','Town')
-# admin.site.register(models.Pdetail,PdetailAdmin)
+class PdetailAdmin(admin.ModelAdmin):
+    list_display= ('name','date_of_birth','Gender','phone_number','Email','Address','City')
+admin.site.register(models.Pdetail, PdetailAdmin)
 
+
+#Fileadmin
 class FileAdmin(admin.ModelAdmin):
    list_display= ('Title','Document')
 admin.site.register(models.Fileupload,FileAdmin)

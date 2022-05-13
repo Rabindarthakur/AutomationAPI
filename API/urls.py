@@ -10,9 +10,9 @@ from django.conf.urls.static import static
 urlpatterns = [
 
   #Profiledetails
-  # path('api/user/Pdetail/post/',views.PdetailCreate.as_view(), name='pdetail_post'),
-  # path('api/user/Pdetail/list/',views.PdetailList.as_view(), name='pdetail_list'),
-  # path('api/user/Pdetail/update/<int:pk>',views.PdetailUpdate.as_view(), name='pdetail_update'),
+  path('api/users/Pdetail/post', PdetailCreate.as_view(queryset=Pdetail.objects.all(), serializer_class=Pdetailserializers), name='user-list'),
+  path('api/user/Pdetail/list/',views.PdetailList.as_view(queryset=Pdetail.objects.all(), serializer_class=Pdetailserializers), name='pdetail_list'),
+  path('api/user/Pdetail/update/<int:pk>',views.PdetailUpdate.as_view(queryset=Pdetail.objects.all(), serializer_class=Pdetailserializers), name='pdetail_update'),
   
   #FileField
   path('api/users/file/upload/post/',views.FileuploadCreate.as_view(), name='fileupload'),
