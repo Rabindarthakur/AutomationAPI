@@ -214,3 +214,21 @@ class certificationUpdate(generics.UpdateAPIView):
 
 
 
+#data views 
+
+#DataCreate
+class dataCreate(generics.CreateAPIView):
+    queryset = data.objects.all()
+    serializer_class = dataserializers
+
+#Data List
+
+class dataList(generics.ListAPIView):
+    queryset = data.objects.all()
+    serializer_class = dataserializers
+
+#DataUpdate
+
+class dataUpdate(generics.UpdateAPIView):
+    queryset = data.objects.all()
+    serializer_class = dataserializers

@@ -67,6 +67,13 @@ urlpatterns = [
   path('api/user/Certificaion/update/<int:pk>',views.certificationUpdate.as_view(),  name='certification_update'),
   #path('api/user/Certificaion/<int:pk>',views.certificationDetail.as_view(),  name='certification_details'),
   #path('api/user/Certificaion/delete/<int:pk>',views.certificationDelete.as_view(),  name='certification_delete',),
+
+
+  #DataModel
+
+  path('api/user/data/post/',views.dataCreate.as_view(),  name='datapost'),
+  path('api/user/data/list/',views.dataList.as_view(),  name='dataList'),
+  path('api/user/data/update/<int:pk>',views.dataUpdate.as_view(),  name='dataUpdate'),
     
 
 

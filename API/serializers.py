@@ -51,3 +51,7 @@ class certificateserializers(serializers.ModelSerializer):
         model = certification
         fields = '__all__'
 
+class dataserializers(serializers.ModelSerializer):
+    class Meta:
+        model= data
+        fields='__all__'

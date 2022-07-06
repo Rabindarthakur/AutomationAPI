@@ -60,3 +60,11 @@ class certificationAdmin(admin.ModelAdmin):
     list_display= ('certification_on','certificate_Id' ,'certificate_url')
 admin.site.register(models.certification, certificationAdmin)
 
+
+
+#DataAdmin
+
+class DataAdmin(admin.ModelAdmin):
+    # a list of displayed columns name.
+    list_display= ('d1','d2')
+admin.site.register(models.data, DataAdmin)

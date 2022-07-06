@@ -98,3 +98,6 @@ class certification(models.Model):
 
 
 
+class data(models.Model):
+    d1=models.TextField(max_length=255)
+    d2=models.TextField(max_length=255)
